@@ -36,7 +36,8 @@ Each feature file starts with an H1 and one paragraph of user-visible behavior, 
 - [Hosted charts](./hosted-charts.md) — pro users create, edit, rename, publish and list cloud charts.
 - [References and containers](./references-and-containers.md) — `(Label)` pointers draw edges to existing nodes, and only to nodes; `{ }` groups lines into a container.
 - [Access and paywalls](./access-and-paywalls.md) — what logged-out and free users are stopped from, and where they are sent.
-- [Graph interaction](./graph-interaction.md) — tapping or double-clicking a node or edge reveals its editor line; the `h`/`v` align hotkeys.
+- [Graph interaction](./graph-interaction.md) — tapping (or Alt+double-clicking) a node or edge reveals its editor line; the `h`/`v` align hotkeys.
+- [Canvas editing](./canvas-editing.md) — Lucidchart-style editing on the graph: add, connect, rename, label edges and delete, each written back into the document text.
 - [Graph layout](./graph-layout.md) — auto layout until a drag freezes positions; snap on drop, undoable drags, undo scoped to the loaded document, AI Undo button derived from the newest entry; frozen charts survive text edits, legacy maps, align tools, unfreeze.
 
 ## Not yet mapped

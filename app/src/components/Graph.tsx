@@ -45,6 +45,7 @@ import {
 } from "../lib/useEditorStore";
 import { useGraphStore } from "../lib/useGraphStore";
 import { addToUndoStack } from "../lib/undoStack";
+import { canEditCanvas } from "../lib/canvasActions";
 import { isEdge } from "../lib/utils";
 import { usePromptStore } from "../lib/usePromptStore";
 import { Box } from "../slang";
@@ -58,6 +59,7 @@ import {
 } from "../lib/resolveNodePositions";
 import styles from "./Graph.module.css";
 import { GRAPH_CONTEXT_MENU_ID, GraphContextMenu } from "./GraphContextMenu";
+import { CanvasEditor, editOnCanvas } from "./CanvasEditor";
 import classNames from "classnames";
 import { getThemeEditor, toTheme, useBackground } from "../lib/toTheme";
 import equal from "fast-deep-equal";
@@ -73,6 +75,7 @@ const Graph = memo(function Graph({ shouldResize }: { shouldResize: number }) {
   const [initResizeNumber] = useState(shouldResize);
   const cy = useRef<undefined | Core>();
   const cyErrorCatcher = useRef<undefined | Core>();
+  const [cyInstance, setCyInstance] = useState<Core>();
 
   // Sometimes we want to do things only on the first render
   const isFirstRender = useRef(true);
@@ -94,6 +97,7 @@ const Graph = memo(function Graph({ shouldResize }: { shouldResize: number }) {
   // Initialize Graph and Subscribe to doc for updates
   useEffect(() => {
     const destroy = initializeGraph({ cy, cyErrorCatcher });
+    setCyInstance(cy.current);
     const update = getGraphUpdater({
       cy,
       cyErrorCatcher,
@@ -114,6 +118,7 @@ const Graph = memo(function Graph({ shouldResize }: { shouldResize: number }) {
       unsubscribe();
       unsubscribeDiff();
       if (destroy) destroy();
+      setCyInstance(undefined);
     };
   }, []);
 
@@ -154,10 +159,11 @@ const Graph = memo(function Graph({ shouldResize }: { shouldResize: number }) {
       overflow="hidden"
       style={{ background: bg }}
       onContextMenu={show}
-      className={classNames(styles.GraphContainer, "graph")}
+      className={classNames(styles.GraphContainer, "graph relative")}
       data-flowchart-fun-canvas="true"
     >
       <Box id="cy" overflow="hidden" />
+      {cyInstance ? <CanvasEditor cy={cyInstance} /> : null}
       <GraphContextMenu />
     </Box>
   );
@@ -305,10 +311,19 @@ function initializeGraph({
     cyCurrent.on(
       "dblclick",
       "node, edge",
-      function handleDblClick(this: NodeSingular | EdgeSingular) {
+      function handleDblClick(
+        this: NodeSingular | EdgeSingular,
+        event: EventObject
+      ) {
         // Cytoscape fires dblclick for two quick clicks even on different elements
         const [previous, latest] = lastTwoTapTargets;
         if (previous !== latest) return;
+        // Alt/Option + double-click jumps to the line instead of editing in place
+        const altKey = (event.originalEvent as MouseEvent | undefined)?.altKey;
+        if (canEditCanvas() && !altKey) {
+          editOnCanvas(this, event.position);
+          return;
+        }
         const { lineNumber } = this.data();
         moveCursorToLine(lineNumber);
       }

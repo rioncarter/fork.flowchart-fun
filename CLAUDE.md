@@ -140,6 +140,10 @@ The parsing logic in `app/src/lib/prepareChart/prepareChart.ts` handles all thre
 
 > **DO NOT REMOVE** the legacy delimiter handling. There are ~500 paying customers with existing charts that may use older formats. Removing backward compatibility could break their projects.
 
+### Canvas Editing (drag-and-drop)
+
+The graph pane is also an editor: add a node (double-click empty canvas or the `Add Node` button), drag a connector handle onto a node to connect or onto empty canvas to add a connected node, double-click (or select + Enter/F2) to rename a node or label an edge, Delete to remove. The text stays the single source of truth: every canvas action is a text rewrite from `app/src/lib/canvasEdits.ts` (pure, unit-tested against every template), applied by `applyCanvasEdit` in `app/src/lib/canvasActions.ts`, which also re-keys frozen node positions and pushes one undo entry. The overlay (handles, inline label editor, keys) is `app/src/components/CanvasEditor.tsx`. Alt+double-click still jumps to the line in the editor. See `.claude/skills/verify/features/canvas-editing.md`.
+
 ### State Management
 
 **Primary:** Zustand stores

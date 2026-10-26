@@ -68,6 +68,11 @@ msgstr "Compte"
 msgid "Active"
 msgstr "Actif"
 
+#: src/components/GraphFloatingMenu.tsx:81
+#: src/components/GraphFloatingMenu.tsx:86
+msgid "Add Node"
+msgstr "Ajouter un nœud"
+
 #: src/lib/parserErrors.tsx:49
 msgid "Add a backslash (<0>\\</0>) before any special characters: <1>(</1>, <2>:</2>, <3>#</3>, or <4>.</4>`"
 msgstr "Ajoutez un backslash (<0>\\</0>) avant tout caractère spécial: <1>(</1>, <2>:</2>, <3>#</3>, ou <4>.</4>"
@@ -80,18 +85,18 @@ msgstr "Ajouter des étapes"
 msgid "Advanced"
 msgstr "Avancé "
 
-#: src/components/GraphFloatingMenu.tsx:151
-#: src/components/GraphFloatingMenu.tsx:155
+#: src/components/GraphFloatingMenu.tsx:167
+#: src/components/GraphFloatingMenu.tsx:171
 msgid "Align Horizontally"
 msgstr "Aligner Horizontalement"
 
-#: src/components/GraphFloatingMenu.tsx:139
-#: src/components/GraphFloatingMenu.tsx:143
+#: src/components/GraphFloatingMenu.tsx:155
+#: src/components/GraphFloatingMenu.tsx:159
 msgid "Align Nodes"
 msgstr "Aligner les nœuds"
 
-#: src/components/GraphFloatingMenu.tsx:163
-#: src/components/GraphFloatingMenu.tsx:167
+#: src/components/GraphFloatingMenu.tsx:179
+#: src/components/GraphFloatingMenu.tsx:183
 msgid "Align Vertically"
 msgstr "Aligner Verticalement"
 
@@ -608,6 +613,14 @@ msgstr "Télécharger SVG"
 msgid "Drag and drop a CSV file here, or click to select a file"
 msgstr "Glissez-déposez un fichier CSV ici, ou cliquez pour sélectionner un fichier"
 
+#: src/components/CanvasEditor.tsx:372
+msgid "Drag to connect"
+msgstr "Glisser pour connecter"
+
+#: src/components/CanvasEditor.tsx:373
+msgid "Drag to connect, or drop on empty canvas to add a node"
+msgstr "Glissez pour connecter, ou déposez sur une zone vide du canevas pour ajouter un nœud"
+
 #: src/components/LearnSyntaxDialog.tsx:248
 msgid "Draw an edge from multiple nodes by beginning the line with a reference"
 msgstr "Dessinez une arête à partir de plusieurs nœuds en commençant la ligne par une référence"
@@ -642,6 +655,11 @@ msgstr "Style Edge"
 #: src/components/Tabs/ThemeTab.tsx:600
 msgid "Edge Text Size"
 msgstr "Taille du texte de bord"
+
+#: src/components/CanvasEditor.tsx:501
+#: src/components/CanvasEditor.tsx:512
+msgid "Edge label"
+msgstr "Libellé de l'arête"
 
 #: src/lib/parserErrors.tsx:21
 msgid "Edge missing indentation"
@@ -1088,8 +1106,8 @@ msgstr "Disposition "
 msgid "Layout Algorithm"
 msgstr "Algorithme de mise en page"
 
-#: src/components/GraphFloatingMenu.tsx:122
-#: src/components/GraphFloatingMenu.tsx:124
+#: src/components/GraphFloatingMenu.tsx:138
+#: src/components/GraphFloatingMenu.tsx:140
 msgid "Layout Frozen"
 msgstr "Mise en page gelée"
 
@@ -1178,8 +1196,8 @@ msgstr "Support de fichier local"
 msgid "Local saving for offline access"
 msgstr "Enregistrement local pour un accès hors ligne"
 
-#: src/components/GraphFloatingMenu.tsx:112
-#: src/components/GraphFloatingMenu.tsx:114
+#: src/components/GraphFloatingMenu.tsx:128
+#: src/components/GraphFloatingMenu.tsx:130
 msgid "Lock Zoom to Graph"
 msgstr "Verrouiller le Zoom sur le Graphique"
 
@@ -1295,6 +1313,11 @@ msgstr "Nouveau Dossier"
 msgid "New from Flowchart Fun:"
 msgstr "Nouveau de Flowchart Fun :"
 
+#: src/components/CanvasEditor.tsx:81
+#: src/components/CanvasEditor.tsx:297
+msgid "New node"
+msgstr "Nouveau nœud"
+
 #: src/pages/Account.tsx:182
 #: src/pages/Account.tsx:520
 msgid "Next charge"
@@ -1357,6 +1380,10 @@ msgstr "Forme de nœud"
 #: src/components/LearnSyntaxDialog.tsx:297
 msgid "Node Shapes"
 msgstr "Formes de nœud"
+
+#: src/components/CanvasEditor.tsx:501
+msgid "Node label"
+msgstr "Libellé du nœud"
 
 #: src/components/Tabs/ThemeTab.tsx:228
 msgid "Nodes"
@@ -1597,8 +1624,8 @@ msgstr "Demandez un lien magique"
 msgid "Request Password Reset"
 msgstr "Demandez une réinitialisation du mot de passe "
 
-#: src/components/GraphFloatingMenu.tsx:77
-#: src/components/GraphFloatingMenu.tsx:80
+#: src/components/GraphFloatingMenu.tsx:93
+#: src/components/GraphFloatingMenu.tsx:96
 msgid "Reset"
 msgstr "Réinitialiser"
 
@@ -2354,13 +2381,13 @@ msgstr "Votre pass ne se renouvelle jamais. Lorsqu'il se termine, vos graphiques
 msgid "Your subscription is <0>{statusDisplay}</0>."
 msgstr "Votre abonnement est <0>{statusDisplay}</0>."
 
-#: src/components/GraphFloatingMenu.tsx:92
-#: src/components/GraphFloatingMenu.tsx:96
+#: src/components/GraphFloatingMenu.tsx:108
+#: src/components/GraphFloatingMenu.tsx:112
 msgid "Zoom In"
 msgstr "Zoomer"
 
-#: src/components/GraphFloatingMenu.tsx:102
-#: src/components/GraphFloatingMenu.tsx:106
+#: src/components/GraphFloatingMenu.tsx:118
+#: src/components/GraphFloatingMenu.tsx:122
 msgid "Zoom Out"
 msgstr "Zoomer vers l'extérieur"
 
@@ -2379,6 +2406,10 @@ msgstr "une fois"
 #: src/pages/LogIn.tsx:205
 msgid "or"
 msgstr "ou"
+
+#: src/components/GraphFloatingMenu.tsx:81
+msgid "or double-click the canvas"
+msgstr "ou double-cliquez sur le canevas"
 
 #: src/pages/Pricing2.tsx:183
 msgid "or get a <0>30-Day Pass for $9</0> — one payment, never renews"

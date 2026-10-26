@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 interface UndoAction {
-  kind: "ai" | "layout";
+  kind: "ai" | "layout" | "canvas";
   undo: () => void;
   redo: () => void;
 }

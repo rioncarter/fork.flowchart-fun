@@ -7,6 +7,7 @@ import {
   AlignCenterHorizontal,
   AlignCenterVertical,
   SquaresFour,
+  PlusCircle,
 } from "phosphor-react";
 import { useCallback, useEffect } from "react";
 import { FaRegSnowflake } from "react-icons/fa";
@@ -22,6 +23,7 @@ import {
   alignNodesVertically,
 } from "../lib/alignNodes";
 import { isTypingTarget } from "../lib/isTypingTarget";
+import { addNodeAtCenter } from "./CanvasEditor";
 
 const ZOOM_STEP = 0.5;
 
@@ -74,6 +76,20 @@ export function GraphFloatingMenu() {
 
   return (
     <div className="absolute bottom-4 right-4 flex bg-white shadow-md rounded-lg overflow-hidden gap-1 p-1 items-center dark:bg-neutral-600">
+      {canEdit === true ? (
+        <Tooltip2
+          content={t`Add Node` + " (" + t`or double-click the canvas` + ")"}
+        >
+          <IconButton2
+            size="xs"
+            onClick={addNodeAtCenter}
+            aria-label={t`Add Node`}
+            data-testid="Add Node"
+          >
+            <PlusCircle size={16} />
+          </IconButton2>
+        </Tooltip2>
+      ) : null}
       <Tooltip2 content={t`Reset`}>
         <IconButton2
           size="xs"

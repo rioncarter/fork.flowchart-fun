@@ -119,11 +119,14 @@ export default async ({ page, ff, step, expect }) => {
   ff.note({ quick });
   expect(quick.editorFocused, "two quick taps on different nodes must not focus the editor").toBe(false);
 
-  step("double-click Last node: editor focuses, cursor on its line, line scrolled into view");
+  step("Alt+double-click Last node: editor focuses, cursor on its line, line scrolled into view");
   expect((await editorState(page)).rendered).not.toContain("Last node");
   const last = await nodePoint(page, ff, "Last node");
   await page.waitForTimeout(CYTOSCAPE_DOUBLE_CLICK_WINDOW_MS + 150);
+  // A plain double-click edits the label on the canvas; Alt jumps to the line
+  await page.keyboard.down("Alt");
   await page.mouse.dblclick(last.x, last.y);
+  await page.keyboard.up("Alt");
   await expect.poll(async () => (await editorState(page)).cursorText).toBe("Last node");
   const dbl = await editorState(page);
   ff.note({ dbl });
